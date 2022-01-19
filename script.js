@@ -1,5 +1,14 @@
 const storage = window.localStorage
+//
 
+// var b = undefined
+let b = { value: 'b' }
+
+// let a = 'a'
+b = 'c'
+
+console.log(b)
+//
 readLocalStorageText()
 
 function createTextListItem(text) {

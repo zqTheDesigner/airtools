@@ -1,0 +1,18 @@
+@font-face {
+  font-family: 'MaterialIcons-Regular';
+  src: url('./MaterialIcons-Regular.ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.icon {
+  font-family: 'MaterialIcons-Regular';
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.hide {
+  display: none;
+}
