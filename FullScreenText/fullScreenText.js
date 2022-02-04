@@ -111,7 +111,7 @@ const fullScreenText = new Component({
         const li = document.createElement('li')
         li.innerText = text
         li.addEventListener('click', () => {
-          document.getElementById('app').innerHTML = text
+          document.getElementById('app').innerHTML = `<h1>${text}</h1>`
         })
         container.appendChild(li)
       })
