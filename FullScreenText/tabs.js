@@ -1,0 +1,4 @@
+const tabsElement = `
+<div>
+</div>
+`

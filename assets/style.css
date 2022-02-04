@@ -1,12 +1,21 @@
 @font-face {
   font-family: 'MaterialIcons-Regular';
-  src: url('./MaterialIcons-Regular.ttf');
+  src: url('./MaterialIcons-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-.icon {
+.material-icon {
   font-family: 'MaterialIcons-Regular';
+  font-weight: normal;
+  font-style: normal;
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
 }
 
 .cursor-pointer {
