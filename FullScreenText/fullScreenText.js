@@ -1,49 +1,3 @@
-class Component {
-  constructor(options) {
-    /**
-     *  Name of the component, used for refer to the component object itself
-     */
-    this.component = options.name
-
-    /**
-     * Methods contains all the functions, will be fully exposed for dom to use
-     * Since this will be a light weight framework, will not consider private
-     * methods
-     */
-    this.methods = options.methods
-
-    /**
-     * First replace to create name space IDs
-     * Second replace to call the methods within this class
-     */
-    this.domElement = options.element
-      .replace(/id\=\"/g, `id="${options.name}`)
-      .replace(/\$methods/g, `${this.component}.methods`)
-
-    /**
-     * Currently this function have to be called manually, after the
-     * element beend injected to html dom
-     */
-    this.mounted = options.mounted
-  }
-
-  /**
-   * Expose all the methods for dom to call
-   * all the methods in options constructure object
-   * will be exposed to dom
-   */
-  methods() {
-    return this.methods
-  }
-
-  /**
-   * Returns html dom element
-   */
-  html() {
-    return this.domElement
-  }
-}
-
 const fullScreenText = new Component({
   /**
    * Required, name have to be same as the name of class instance,
@@ -126,7 +80,7 @@ const fullScreenText = new Component({
     this.methods.loadTextFromLocalStorage()
   },
 
-  element: `
+  html: `
 		<div>
 			<div id="inputContainer">
 				<form id="inputForm">
@@ -145,5 +99,5 @@ const fullScreenText = new Component({
 		`,
 })
 
-document.getElementById('app').innerHTML = fullScreenText.html()
-fullScreenText.mounted() // Manually call the moutned functions
+// document.getElementById('app').innerHTML = fullScreenText.html()
+// fullScreenText.mounted() // Manually call the moutned functions

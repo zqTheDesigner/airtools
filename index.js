@@ -1,5 +1,5 @@
-const HTML = document.querySelector('html')
-const app = document.querySelector('#app')
+// const HTML = document.querySelector('html')
+// const app = document.querySelector('#app')
 
 function loadScript(file = 'script.js') {
   /**
@@ -7,9 +7,9 @@ function loadScript(file = 'script.js') {
    * js file within the folder,  directly nested within the provided folder
    * name, and append it to html.
    */
+  // const script = `<script src=${file} async></script>`
   const script = document.createElement('script')
   script.setAttribute('src', `${file}`)
+  script.setAttribute('defer', false)
   HTML.append(script)
 }
-
-loadScript('render.js')

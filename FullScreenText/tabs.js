@@ -1,4 +1,0 @@
-const tabsElement = `
-<div>
-</div>
-`
