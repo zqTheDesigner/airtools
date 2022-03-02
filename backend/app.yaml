@@ -1,8 +1,1 @@
 runtime: python39 # or another supported version
-
-env_variables:
-  BUCKET_NAME: "example-gcs-bucket"
-
-handlers:
-- url: /.*
-  script: main.app
