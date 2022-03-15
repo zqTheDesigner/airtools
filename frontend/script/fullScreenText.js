@@ -29,6 +29,7 @@ const initFullScreenTextList = () => {
   fullScreenTextElem().append(container)
   // Call function to insert content
   updateFullScreenTextList()
+  fullScreenText.clearCountdown()
 }
 
 const updateFullScreenTextList = () => {
@@ -48,11 +49,10 @@ const renderFullScreenTextList = () => {
     textItemElem.setAttribute('onclick', `renderFullScreenTextItem('${text}')`)
     textItemElem.innerHTML = `
     <b>${text}</b>
-    <p>${textItem.practiced}</p>
+    <p>Practiced: ${textItem.practiced}</p>
     `
     container.append(textItemElem)
   })
-  console.log(container)
   return container
 }
 
@@ -99,6 +99,61 @@ const renderFullScreenTextItem = (text) => {
   <button onclick='initFullScreenTextList()'>Back</button>
   `
   fullScreenTextElem().append(container)
+  fullScreenText.initCountdown()
+}
+
+const fullScreenText = {
+  name: 'fullScreenText',
+  timer: '',
+  practiceInterval: 30,
+  popUpElem: function () {
+    return document.getElementById(`${this.name}Popup`)
+  },
+
+  initCountdown: function () {
+    console.log('initCountdown')
+    // The bind(this) is required for call back functions
+    this.timer = setTimeout(
+      this.showPopup.bind(this),
+      this.practiceInterval * 60 * 1000
+    )
+  },
+
+  clearCountdown: function () {
+    clearTimeout(this.timer)
+  },
+
+  showPopup: function () {
+    // Empty parent element
+    // Create container
+    const container = document.createElement('div')
+    container.setAttribute('id', `${this.name}Popup`)
+    container.setAttribute(
+      'style',
+      `width:100vw; 
+      height:100vh; 
+      position:absolute; 
+      padding:2rem; 
+      top:0; 
+      left:0; 
+      background:#fec4d0`
+    )
+    // Create html element with required ids
+    const content = `
+    <h1 onclick="${this.name}.removePopup()">Time to practice</h1>
+    `
+    // Append container
+    container.innerHTML = content
+    app().append(container)
+    // Call function to insert content
+  },
+
+  removePopup: function () {
+    this.popUpElem().outerHTML = ''
+    this.initCountdown()
+  },
+
+  countUpPractice: function () {},
 }
 
 initFullScreenTextElem()
