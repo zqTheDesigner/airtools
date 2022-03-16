@@ -5,7 +5,7 @@ const init = () => {
   const container = document.createElement('div')
   container.setAttribute('id', 'nav')
   container.innerHTML = `
-		<button onclick='loadFullScreenTextScript()'>
+		<button onclick='toFullScreenTextScript()'>
 			Full Screen Text
 		</button>
 		<hr>
@@ -13,25 +13,35 @@ const init = () => {
   app().append(container)
 
   if (window.location.hash == '#/fullScreenText') {
-    loadFullScreenTextScript()
+    toFullScreenTextScript()
   }
 }
 
-const loadFullScreenTextScript = () => {
-  // Load script for fullScreenText
-  const jsDoc = 'script/fullScreenText.js'
+/**
+ * Load script for fullScreenText component
+ */
+function toFullScreenTextScript() {
+  const scriptPath = 'script/fullScreenText.js'
   window.location.hash = '/fullScreenText'
-  const existingSxript = document.querySelector(`script[src="${jsDoc}"]`)
+  const existingSxript = document.querySelector(`script[src="${scriptPath}"]`)
 
   if (!existingSxript) {
     // If script haven't been loaded
-    const script = document.createElement('script')
-    script.setAttribute('src', jsDoc)
-    document.head.append(script)
+    loadScript(scriptPath)
   } else {
     // Fall back function, if script already exist
-    initFullScreenTextList()
+    fullScreenText.init()
   }
+}
+
+/**
+ * Append a script element to document head
+ * @param {string} scriptPath - Abs path to script file
+ */
+function loadScript(scriptPath) {
+  const script = document.createElement('script')
+  script.setAttribute('src', scriptPath)
+  document.head.append(script)
 }
 
 init()
