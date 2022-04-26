@@ -119,6 +119,14 @@ components:
       properties:
         event_history:
           type: object
+          example:
+            page_url: https://test.brivge.com/globalparts/create
+            time_interval: 60000
+            selected_mode: Create/Modify Global parts on screen
+            upload: 1
+            add_item: 1
+            edit_item: 1
+            first_prompt: true/false
           properties:
             page_url:
               type: string
